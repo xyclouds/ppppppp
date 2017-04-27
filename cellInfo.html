@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>身份认证</title>
+    <link href="./css/base.css" rel="stylesheet"/>
+    <link href="./css/index.css" rel="stylesheet"/> 
+</head>
+<style>
+	html,body{
+		background: #F1F1F1!important;
+	}
+</style>
+<body>
+	<div class="cellInfo">
+		<ul class="clink">
+			<li class="first lf"><b class="clinkActive">1</b><br><span>身份信息</span></li>
+			<li class="link lf"></li>
+			<li class="two lf"><b>2</b><br><span>照片上传</span></li>
+		</ul>
+	</div>
+	<!--身份信息验证    开始-->
+	<div class="identityOne" style="display:none">
+		<p>实名认证</p>
+		<ul class="identity" >
+		    <li><span>真实姓名：</span><input class="name" type="text" placeholder="输入真实姓名"/></li>
+		    <li><span>身份证号码：</span><input class="number" type="text" placeholder="输入身份证号" /></li>
+		</ul>
+		<p>储蓄卡</p>
+		<ul class="identity savecard">
+		    <li><span>发卡银行：</span>
+		    	<select name="selectbank" class="selectbank">
+		        </select > 
+		    </li>
+		    <li><span>卡号：</span><input class="cardnum" type="text" placeholder="输入银行卡号" /></li>
+		    <li><span>银行预留手机：</span><input class="phone" type="text" placeholder="银行预留手机号" /></li>		    
+		</ul>
+		<div class="nextStep">下一步</div>
+	</div>
+	<!-- 图片头像验证 开始-->
+	<div class="identityTwo" >		
+		<div class="filebox" >
+			<ul  class="example lf">
+				<li><img src="./images/sfzm.png" alt="" /></li>
+				<li><img src="./images/sfbm.png" alt="" /></li>
+				<li><img src="./images/scsfz.png" alt="" /></li>
+			</ul>
+			<div class="photoInfo">			
+				<label for="choose">
+					<div class="uploadfile" id="sfzm">
+					    <img src="./images/zhaop.png" alt="" >
+				    </div>
+				</label>
+				<input type="file" id="choose" style="display: none;"/>
+				<label for="upload">
+					<div class="uploadfile">
+					    <img src="./images/zhaop.png" alt="">
+				    </div>
+				</label>
+				<input type="file" id="upload" style="display: none;"/>
+				<label for="upload">
+					<div class="uploadfile">
+					    <img src="./images/zhaop.png" alt="">
+				    </div>
+				</label>
+				<input type="file" id="upload" style="display: none;"/>
+		    </div>				
+		</div>
+		<div class="cellcommit">确认提交</div>
+	</div>	
+</body>
+<!-- <script type="text/javascript" src="./js/jquery-1.10.2.min.js"></script> -->
+<!-- <script type="text/javascript" src="./js/md5.js"></script>
+<script type="text/javascript" src="./js/public.js"></script> -->
+
+<!--<script>
+	var uid = getQueryString("uid");
+	var fulltime = getFullTime();   
+    var pswEncryption=hex_md5("324kljdfisudoi@uywei4881089b86d489009dd58eaba659f6dda8"+fulltime.substr(4));
+
+     /*获取所在银行列表*/
+    var selectData ={
+        "public": commonPara("BankList",pswEncryption),
+        "reqdata": {
+        }
+    }
+    var ruls = PostAjax(selectData);
+    var dataObj=[]
+    if(ruls.public.retcode == 1){         
+        var banks = ruls.respdata.banks.split("|");
+        var banksicon = ruls.respdata.banksicon.split("|");
+        for(var i=0; i<banks.length; i++){
+            dataObj.push([banks[i],banksicon[i]])           
+            var text = '<option value="'+i+'">'+dataObj[i][0]+'</option>'           
+            $(".selectbank").append(text);
+        }
+       // console.log(dataObj)
+    }else if(ruls.public.retcode == 100){
+       alert(ruls.public.retmsg);
+       
+    }else if(ruls.public.retcode == 201){
+       alert("网络异常");
+       
+   }
+
+   /******点击 下一步************/
+
+   $(".nextStep").click(function(){
+
+   	   $(".two b").addClass("clinkActive");
+           $(".identityOne").css({display:"none"})
+           $(".identityTwo").css({display:"block"})
+   	   /*var cardadd = $(".selectbank").find("option:selected").text();
+       var cardicon ="";
+       for(var i=0; i<dataObj.length; i++){
+          if(dataObj[i][0] == cardadd){
+            cardicon=dataObj[i][1];
+          }
+       }
+
+       var cellData ={
+            "public": commonPara("Certification",pswEncryption),
+            "reqdata": {
+                uid:uid,
+                ucardusername:$(".name").val(),
+                ucardnum:$(".number").val(),
+                ubankcard:$(".cardnum").val(),
+                ubank:cardadd,
+                ubankicon:cardicon,                               
+                ubankcardtel:$(".phone").val()
+             }
+        }
+
+        var data = PostAjax(cellData);
+        console.log(data);
+        if(data.public.retcode == 1){ 
+           $(".two b").addClass("clinkActive");
+           $(".identityOne").css({display:"none"})
+           $(".identityTwo").css({display:"block"})
+        }else if(data.public.retcode == 100){
+           alert(data.public.retmsg);
+           
+        }else if(data.public.retcode == 201){
+           alert("网络异常");
+           
+       }*/
+
+   })
+
+</script>-->
+<script src="./js/zepto.min.js"></script>
+<script type="text/javascript" src="./js/h5upload.js"></script>
+<script>
+	$.fileUpload({ filebutton: "#choose", previewZoom: "#sfzm" });
+</script>
+</html> 
