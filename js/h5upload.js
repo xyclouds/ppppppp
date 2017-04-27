@@ -257,7 +257,7 @@
     $.extend($, {
         fileUpload: function (options) {
             var para = {
-                multiple: true,
+                multiple: false,
                 filebutton: ".filePicker",
                 uploadButton: null,
                 url: "/home/MUploadImg",
@@ -468,8 +468,10 @@
                 core.fileSelected();
             });
 
-            $(document).on("click", para.filebutton, function () {
+            $(document).on("click", para.filebutton, function (e) {
+                //console.log(e);
                 console.log("clicked");
+                
             });
             if (para.uploadButton) {
                 $(document).on("click", para.uploadButton, function () {
